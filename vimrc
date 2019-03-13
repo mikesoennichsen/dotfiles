@@ -15,6 +15,7 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'fisadev/vim-isort'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
+Plugin 'posva/vim-vue'
 
 call vundle#end()            " required
 
