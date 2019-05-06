@@ -16,6 +16,7 @@ Plugin 'fisadev/vim-isort'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'posva/vim-vue'
+Plugin 'w0rp/ale'
 
 call vundle#end()            " required
 
@@ -86,5 +87,6 @@ autocmd FileType python set sts=4
 hi ColorColumn ctermbg=234
 
 autocmd BufRead * syn keyword pythonBuiltin self cls
-set clipboard=unnamed
-
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+vmap <leader>y :w! /tmp/vitmp<CR>
+nmap <leader>p :r! cat /tmp/vitmp<CR>
