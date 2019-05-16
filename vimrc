@@ -9,7 +9,6 @@ Plugin 'hdima/python-syntax'
 Plugin 'python-mode/python-mode'
 Plugin 'django.vim'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'valloric/youcompleteme'
 Plugin 'tpope/vim-commentary'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'fisadev/vim-isort'
@@ -17,6 +16,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'posva/vim-vue'
 Plugin 'w0rp/ale'
+Plugin 'vim-scripts/indentpython.vim'
 
 call vundle#end()            " required
 
@@ -64,7 +64,6 @@ set mouse=a
 if has('mouse_sgr')
   set ttymouse=sgr
 endif
-syntax on
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
@@ -90,3 +89,29 @@ autocmd BufRead * syn keyword pythonBuiltin self cls
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 vmap <leader>y :w! /tmp/vitmp<CR>
 nmap <leader>p :r! cat /tmp/vitmp<CR>
+
+"
+"Python syntax
+"
+au BufNewFile,BufRead *.py
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix
+
+"Bad whitespace
+highlight BadWhitespace ctermbg=red guibg=red
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+set encoding=utf-8
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+let python_highlight_all=1
+syntax on
+
+"WTF
+set backspace=indent,eol,start
