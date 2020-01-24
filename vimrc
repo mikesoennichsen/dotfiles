@@ -17,6 +17,7 @@ Plugin 'mxw/vim-jsx'
 Plugin 'posva/vim-vue'
 Plugin 'w0rp/ale'
 Plugin 'vim-scripts/indentpython.vim'
+Plugin 'prettier/vim-prettier'
 
 call vundle#end()            " required
 
@@ -115,3 +116,8 @@ syntax on
 
 "WTF
 set backspace=indent,eol,start
+
+nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>
+let g:ale_linters = {
+\   'javascript': ['flow', 'eslint'],
+\}
